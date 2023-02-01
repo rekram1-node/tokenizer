@@ -1,0 +1,70 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  NAME: 'tokenizerBinary'
+
+tasks:
+  clean:
+    cmds:
+      - go clean
+
+  test:
+    desc: "runs unit tests"
+    cmds:
+      - go test -v ./...
+
+  test:bench:
+    desc: "runs benchmark tests"
+    cmds:
+      - go test -bench=. ./tokenizer -benchmem
+    sources:
+      - ./**/*.go
+
+  test:ci:
+    desc: "runs unit tests with coverage"
+    cmds:
+    - go test -cover -v ./...
+
+  build:
+    cmds:
+      - go build -trimpath -ldflags "-s -w" -o {{.NAME}}{{exeExt}} {{.CLI_ARGS}}
+    sources:
+      - ./**/*.go
+    generates:
+      - '{{.NAME}}{{exeExt}}'
+    method: checksum
+    env:
+      CGO_ENABLED: 0
+      GOOS: '{{default "" .BUILD_OS}}'
+      GOARCH: '{{default "" .BUILD_ARCH}}'
+    vars:
+      BUILD_FLAGS: '{{default "" .BUILD_FLAGS}}'
+  
+  build-container:
+    deps: [ clean ]
+    cmds:
+      - task: build
+        var: { BUILD_ARCH: amd64, BUILD_OS: linux }
+
+  run:
+    deps: [ build ]
+    sources:
+      - ./**/*
+      - ./*
+    cmds:
+      - ./{{.NAME}}{{exeExt}} {{.CLI_ARGS}}
+  
+  format:
+    cmds:
+      - gofmt -s -w .
+    sources:
+      - ./**/*.go
+
+  lint:
+    cmds:
+      - cmd: golangci-lint run -v -c ./.golangci.yml
+        ignore_error: true
+    sources:
+      - ./**/*.go

@@ -1,0 +1,24 @@
+# macOS artifacts
+.DS_Store
+
+# task artifacts
+.task
+
+# environment config
+.env
+
+# goreleaser artifacts
+dist
+
+# vscode artifacts
+.vscode
+
+# main file
+main.go
+
+# binary
+tokenizerBinary
+
+# misc
+*.ignore
+*.bin

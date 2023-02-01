@@ -1,0 +1,18 @@
+project_name: tokenizer
+
+env:
+  - GO111MODULE=on
+  - CGO_ENABLED=0
+
+before:
+  hooks:
+    - go mod tidy
+    - go mod download
+    - go generate ./...
+
+builds:
+  - 
+    # If true, skip the build.
+    # Useful for library projects.
+    # Default is false
+    skip: true
