@@ -29,7 +29,7 @@ tasks:
 
   build:
     cmds:
-      - go build -trimpath -ldflags "{{.BUILD_FLAGS}}" -o {{.NAME}}{{exeExt}} {{.CLI_ARGS}}
+      - go build -trimpath -ldflags "-s -w" -o {{.NAME}}{{exeExt}} {{.CLI_ARGS}}
     sources:
       - ./**/*.go
     generates:

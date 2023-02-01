@@ -6,6 +6,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	defaultRegex = "\t\n\r ,.:?\"!;()"
+)
+
 func TestTokenize(t *testing.T) {
 	tests := []struct {
 		name          string
@@ -29,10 +33,7 @@ func TestTokenize(t *testing.T) {
 		},
 		{
 			name: "Tokenize: Keep Separators",
-			t: &Tokenizer{
-				Separator:      convertSeparator(defaultRegex),
-				KeepSeparators: true,
-			},
+			t:    Custom(defaultRegex, true, func(word string) bool { return true }),
 			input: `
 			The world is a wonderful place...
 			There are many places in this world!!!	
