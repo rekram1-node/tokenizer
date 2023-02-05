@@ -113,73 +113,73 @@ func main() {
 
 See [benchmark test](https://github.com/rekram1-node/tokenizer/blob/main/tokenizer/benchmark_test.go)
 
-Using the benchmark test, you can see that even with 1 million words we still only have a meager 39 allocations per operation.
+Using the benchmark test, you can see that even with 1 million words we still only have a meager 39 allocations per operation. I believe this number can be beat as well but I am still looking into the feasibility of some operations
 
 ```text
 task: [bench] go test -bench=. ./tokenizer -run=^# -count=10 -benchmem | tee preformance.txt
 goos: darwin
 goarch: arm64
 pkg: github.com/rekram1-node/tokenizer/tokenizer
-BenchmarkTokenize/word_count:_10-8               1000000              1154 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1153 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1155 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1159 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1152 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1154 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1122 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1115 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1110 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_10-8               1000000              1107 ns/op             496 B/op          5 allocs/op
-BenchmarkTokenize/word_count:_100-8               108454             11099 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               108898             10994 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               108961             10968 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               108924             11003 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               109113             10976 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               107854             11127 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               107070             11025 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               108572             11086 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               104055             11044 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_100-8               108446             11075 ns/op            4080 B/op          8 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109167 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109177 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109985 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            110084 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109397 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109133 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109116 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109918 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            110418 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_1000-8               10000            109553 ns/op           50416 B/op         12 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1066           1114218 ns/op          685302 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1074           1117825 ns/op          685298 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1074           1116659 ns/op          685299 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1078           1112335 ns/op          685301 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1081           1107204 ns/op          685300 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1076           1111695 ns/op          685300 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1082           1122813 ns/op          685300 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1068           1114729 ns/op          685300 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1063           1165390 ns/op          685299 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_10000-8               1030           1113300 ns/op          685300 B/op         19 allocs/op
-BenchmarkTokenize/word_count:_100000-8                88          12112446 ns/op         8942866 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                97          12080584 ns/op         8942883 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                97          12054590 ns/op         8942882 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                97          12119115 ns/op         8942878 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                93          12124667 ns/op         8942873 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                97          12046165 ns/op         8942870 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                98          12015797 ns/op         8942871 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                98          12108281 ns/op         8942880 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                96          12039198 ns/op         8942886 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_100000-8                98          12025329 ns/op         8942878 B/op         29 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136513245 ns/op        88036641 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         137814833 ns/op        88036665 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         135903448 ns/op        88036664 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136073953 ns/op        88036616 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136058141 ns/op        88036664 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136534161 ns/op        88036628 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136569016 ns/op        88036908 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136063990 ns/op        88036616 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         136175146 ns/op        88036628 B/op         39 allocs/op
-BenchmarkTokenize/word_count:_1000000-8                8         137739057 ns/op        88036616 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_10-8                893482              1302 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                909124              1309 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                908605              1298 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                905206              1270 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                900795              1254 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                912558              1267 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                928588              1255 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                885170              1264 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                894373              1253 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_10-8                917389              1258 ns/op             496 B/op          5 allocs/op
+BenchmarkTokenize/word_count:_100-8                81775             13954 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85268             13914 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85263             13912 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85602             13973 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85400             13908 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85245             13941 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85260             13896 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85585             14014 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                85687             13925 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_100-8                84966             13921 ns/op            4080 B/op          8 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8143            143447 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                7996            144030 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8072            144614 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8059            143350 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8186            143046 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8046            144263 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8026            143982 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8038            144174 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8079            144182 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_1000-8                8030            142584 ns/op           50416 B/op         12 allocs/op
+BenchmarkTokenize/word_count:_10000-8                795           1447904 ns/op          685299 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                784           1460662 ns/op          685299 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                824           1459105 ns/op          685300 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                818           1462055 ns/op          685299 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                805           1454443 ns/op          685299 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                818           1458763 ns/op          685300 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                819           1453174 ns/op          685299 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                811           1452126 ns/op          685298 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                823           1450348 ns/op          685299 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_10000-8                817           1457028 ns/op          685298 B/op         19 allocs/op
+BenchmarkTokenize/word_count:_100000-8                70          15327946 ns/op         8942875 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                75          15442076 ns/op         8942871 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                76          15366360 ns/op         8942882 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                75          15329089 ns/op         8942887 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                74          15337678 ns/op         8942874 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                74          15398484 ns/op         8942891 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                74          15302757 ns/op         8942877 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                75          15362398 ns/op         8942871 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                74          15387052 ns/op         8942882 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_100000-8                75          15310445 ns/op         8942881 B/op         29 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         171073882 ns/op        88036674 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         169618688 ns/op        88036672 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         169880493 ns/op        88036592 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         169492944 ns/op        88036672 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         170651521 ns/op        88036640 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         169312208 ns/op        88036624 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         169648021 ns/op        88036640 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         170238188 ns/op        88036624 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         170449750 ns/op        88036656 B/op         39 allocs/op
+BenchmarkTokenize/word_count:_1000000-8                6         169968132 ns/op        88036592 B/op         39 allocs/op
 PASS
-ok      github.com/rekram1-node/tokenizer/tokenizer     75.054s
+ok      github.com/rekram1-node/tokenizer/tokenizer     73.772s
 ```
