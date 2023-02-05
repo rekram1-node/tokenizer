@@ -60,13 +60,13 @@ func (t *Tokenizer) SetStopWordRemoval(on bool) *Tokenizer {
 // New Tokenizer Object with your choice of separator, processor, etc
 func (s *Settings) Custom(sep string) (*Tokenizer, error) {
 	if s.Lanuage.Abbreviations == nil {
-		return nil, fmt.Errorf("Invalid Language, missing abbreviations")
+		return nil, fmt.Errorf("invalid Language, missing abbreviations")
 	}
 	if s.Lanuage.Contractions == nil {
-		return nil, fmt.Errorf("Invalid Language, missing contractions")
+		return nil, fmt.Errorf("invalid Language, missing contractions")
 	}
 	if s.Lanuage.StopWords == nil {
-		return nil, fmt.Errorf("Invalid Language, missing stop words")
+		return nil, fmt.Errorf("invalid Language, missing stop words")
 	}
 	return &Tokenizer{
 		Separator:       convertSeparator(sep),
