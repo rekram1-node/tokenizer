@@ -58,8 +58,6 @@ func main() {
 	fmt.Println(tokens)
 	// Output: [string demonstrate stop words removal words stop word examples]
 }
-
-// Output: [the world is a wonderful place there are many places in this world 123 this place is wonderful]
 ```
 
 ### Custom Settings
