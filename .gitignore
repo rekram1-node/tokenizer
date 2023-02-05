@@ -16,9 +16,15 @@ dist
 # main file
 main.go
 
+# allow example main.go files
+!examples/**/main.go
+
+examples/deleteme
+
 # binary
 tokenizerBinary
 
 # misc
 *.ignore
 *.bin
+*.txt

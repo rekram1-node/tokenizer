@@ -15,10 +15,10 @@ tasks:
     cmds:
       - go test -v ./...
 
-  test:bench:
+  bench:
     desc: "runs benchmark tests"
     cmds:
-      - go test -bench=. ./tokenizer -benchmem
+      - go test -bench=. ./tokenizer -run=^# -count=10 -benchmem | tee preformance.txt
     sources:
       - ./**/*.go
 
@@ -41,12 +41,6 @@ tasks:
       GOARCH: '{{default "" .BUILD_ARCH}}'
     vars:
       BUILD_FLAGS: '{{default "" .BUILD_FLAGS}}'
-  
-  build-container:
-    deps: [ clean ]
-    cmds:
-      - task: build
-        var: { BUILD_ARCH: amd64, BUILD_OS: linux }
 
   run:
     deps: [ build ]
