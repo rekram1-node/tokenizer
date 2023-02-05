@@ -28,7 +28,7 @@ go get -u github.com/rekram1-node/tokenizer
 
 ## Usage
 
-For detailed examples see [examples](https://github.com/rekram1-node/tokenizer/examples)
+For detailed examples see [examples](https://github.com/rekram1-node/tokenizer/tree/main/examples)
 
 ### Default
 
