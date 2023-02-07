@@ -1,6 +1,6 @@
 # Tokenizer
 
-[![Go Report](https://goreportcard.com/badge/github.com/rekram1-node/tokenizer)](https://goreportcard.com/report/github.com/rekram1-node/tokenizer) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/rekram1-node/tokenizer/blob/main/LICENSE) ![Build Status](https://github.com/rekram1-node/tokenizer/actions/workflows/main.yml/badge.svg)
+[![Go Report](https://goreportcard.com/badge/github.com/rekram1-node/tokenizer)](https://goreportcard.com/report/github.com/rekram1-node/tokenizer) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://github.com/rekram1-node/tokenizer/blob/main/LICENSE) ![Build Status](https://github.com/rekram1-node/tokenizer/actions/workflows/main.yml/badge.svg) [![Go Reference](https://pkg.go.dev/github.com/rekram1-node/tokenizer.svg)](https://pkg.go.dev/github.com/rekram1-node/tokenizer)
 
 Natural Language Processing (NLP) Tokenization Libary designed for English. Fast, Lean, Customizable. Tokenizes text, replaces abbreviations, replaces contractions, lowercases words, optionally you can remove stop words as well (must specify, see [usage](#usage)). This library is a work in progress but all features mentioned in README should be working as advertised.
 
@@ -28,7 +28,7 @@ go get -u github.com/rekram1-node/tokenizer
 
 ## Usage
 
-For detailed examples see [examples](https://github.com/rekram1-node/tokenizer/examples)
+For detailed examples see [examples](https://github.com/rekram1-node/tokenizer/tree/main/examples)
 
 ### Default
 
